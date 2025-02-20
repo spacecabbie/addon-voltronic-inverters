@@ -25,14 +25,16 @@ This add-on requires some configuration to function properly. Below are the conf
 | `mqtt_broker_host` | The MQTT broker host address.                | `core-mosquitto`|
 | `mqtt_username`    | The username for the MQTT broker.            | `mqtt_user`     |
 | `mqtt_password`    | The password for the MQTT broker.            | `mqtt_password` |
-| `device_type`      | The type of device connection. Can be one of `serial`, `usb-serial`, or `usb`. | `usb`           |
+| `device_type`      | The type of device connection. Can be one of `serial`, `usb-serial0`, `usb-serial1`, `usb0`, `usb1`. | `usb0`|
+
+Normaly usb-serial0 and usb0 are the defaults, only select usb-serial1 or usb1 if you have more then 1 device
 
 ### Example Configuration
 ```yaml
 mqtt_broker_host: "core-mosquitto"
 mqtt_username: "mqtt_user"
 mqtt_password: "mqtt_password"
-device_type: "usb"
+device_type: "usb0"
 ```
 
 ## Updating Configuration
@@ -43,8 +45,10 @@ After making changes to the configuration, restart the add-on for the changes to
 
 The add-on supports the following device connections:
 - `/dev/ttyS0` (Serial)
-- `/dev/ttyUSB0` (USB-Serial)
-- `/dev/hidraw0` (USB)
+- `/dev/ttyUSB0` (USB-Serial0)
+- `/dev/ttyUSB1` (USB-Serial1)
+- `/dev/hidraw0` (USB0)
+- `/dev/hidraw1` (USB1)
 
 Ensure the correct device path is used and accessible by the Home Assistant system.
 
