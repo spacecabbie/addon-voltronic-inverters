@@ -16,17 +16,22 @@ if [ ! -f "$MQTT_CONFIG" ]; then
     exit 1
 fi
 
-# Update the inverter.conf file
 DEVICE=$(bashio::config 'device_type')
 case "${DEVICE}" in
     serial)
         DEVICE_PATH="/dev/ttyS0"
         ;;
-    usb-serial)
+    usb-serial0)
         DEVICE_PATH="/dev/ttyUSB0"
         ;;
-    usb)
+    usb-serial1)
+        DEVICE_PATH="/dev/ttyUSB1"
+        ;;
+    usb0)
         DEVICE_PATH="/dev/hidraw0"
+        ;;
+    usb1)
+        DEVICE_PATH="/dev/hidraw1"
         ;;
     *)
         bashio::log.error "Invalid device type: ${DEVICE}"
